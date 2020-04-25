@@ -21,14 +21,14 @@ class AlbumsController < ApplicationController
       #end
     
       
-     var = current_user.admin
+     var = current_user
       if var ==true
-        @search_admin = Album.ransack(params[:q])
-        @albums = @search_admin.result.includes(:user).page(params[:page])
+        @search = Album.ransack(params[:q])
+        @albums = @search.result.includes(:user).page(params[:page])
       else
        # @albums = current_user.albums
-        @search_current = current_user.albums.ransack(params[:q])
-        @albums = @search_current.result.includes(:user).page(params[:page])
+        @search= current_user.albums.ransack(params[:q])
+        @albums = @search.result.includes(:user).page(params[:page])
       end
      
 

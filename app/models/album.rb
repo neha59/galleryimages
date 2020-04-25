@@ -9,7 +9,7 @@ class Album < ApplicationRecord
     #validates :image_type 
 
     def thumbnail input
-        return self.images[input].variant(resize: '300x400!').processed
+        return self.images[input].variant(resize: '300x300!').processed
     end
 
 
