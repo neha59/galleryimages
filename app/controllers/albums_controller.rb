@@ -6,7 +6,7 @@ class AlbumsController < ApplicationController
   # GET /albums.json
   def allimages
    
-    @albums = Album.where(["title LIKE ?", "%#{params[:search]}%"]).page(params[:page]
+    @albums = Album.where(["title LIKE ?", "%#{params[:search]}%"]).page(params[:page])
 
  end
   def index
