@@ -1,9 +1,14 @@
 class AlbumsController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :index ]
+  before_action :authenticate_user!, except: [:show, :index, :allimages ]
   before_action :set_album, only: [:show, :edit, :update, :destroy]
 
   # GET /albums
   # GET /albums.json
+  def allimages
+   
+    @albums = Album.where(["title LIKE ?", "%#{params[:search]}%"]).page(params[:page])
+
+ end
   def index
 
 
