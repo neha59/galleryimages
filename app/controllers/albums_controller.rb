@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :index, :allimages ]
+  before_action :authenticate_user!, except: [:show, :index, :allimages, :destroy_album ]
   before_action :set_album, only: [:show, :edit, :update, :destroy]
 
   # GET /albums
@@ -61,7 +61,10 @@ class AlbumsController < ApplicationController
     @album.user = current_user
     respond_to do |format|
       if @album.save
+
         format.html { redirect_to @album, notice: 'Album was successfully created.' }
+
+        AlbumMailer.create_album(@album).deliver_now
         format.json { render :show, status: :created, location: @album }
       else
         format.html { render :new }
@@ -76,6 +79,7 @@ class AlbumsController < ApplicationController
     respond_to do |format|
       if @album.update(album_params)
         format.html { redirect_to @album, notice: 'Album was successfully updated.' }
+        AlbumMailer.edit_album(@album).deliver_now
         format.json { render :show, status: :ok, location: @album }
       else
         format.html { render :edit }
@@ -91,7 +95,9 @@ class AlbumsController < ApplicationController
     
    @album.destroy
        respond_to do |format|
+       
         format.html { redirect_to albums_url, notice: 'Album was successfully destroyed.' }
+        AlbumMailer.destroy_album(@album).deliver_now
         format.json { head :no_content }
        end
   end
