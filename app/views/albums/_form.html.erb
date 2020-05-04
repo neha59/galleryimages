@@ -49,6 +49,18 @@
                         <%= form.text_field :tag %>
                     </div>
                 </div>
+                   
+                 <div class="row pb-2">
+                <div class="col-3">
+
+                </div>
+                <div class="col-9">
+                <%= form.check_box :publish %>
+                    <%= form.label :publish,"Publish " %>
+                    
+                </div>
+            </div>
+
 
 
                 <div class="row pb-2">
@@ -63,24 +75,19 @@
                 </div>
 
                 <div class="row pb-2">
-                    <div class="col-3">
-                    </div>
-                    <div class="col-9">
-                        <div class="actions">
+                    <div class="col-7">
+                    <div class="actions">
                             <%= form.submit %>
                         </div>
                     </div>
+                    <div class="col-5">
+                    <button class="float-left">
+                    <%= link_to 'Back', albums_path %>
+                </button>
+                    </div>
 
                 </div>
-                <div class="row">
-
-                    <div class="col-3">
-                    </div>
-                    <div class="col-9 ">
-                        <button class="float-right">
-                            <%= link_to 'Back', albums_path %>
-                        </button>
-                    </div>
+               
                 </div>
 
             </div>

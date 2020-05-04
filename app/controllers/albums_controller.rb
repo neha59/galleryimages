@@ -64,7 +64,7 @@ class AlbumsController < ApplicationController
 
         format.html { redirect_to @album, notice: 'Album was successfully created.' }
 
-        AlbumMailer.create_album(@album).deliver_now
+        #AlbumMailer.create_album(@album).deliver_now
         format.json { render :show, status: :created, location: @album }
       else
         format.html { render :new }
@@ -79,7 +79,7 @@ class AlbumsController < ApplicationController
     respond_to do |format|
       if @album.update(album_params)
         format.html { redirect_to @album, notice: 'Album was successfully updated.' }
-        AlbumMailer.edit_album(@album).deliver_now
+        #AlbumMailer.edit_album(@album).deliver_now
         format.json { render :show, status: :ok, location: @album }
       else
         format.html { render :edit }
@@ -97,7 +97,7 @@ class AlbumsController < ApplicationController
        respond_to do |format|
        
         format.html { redirect_to albums_url, notice: 'Album was successfully destroyed.' }
-        AlbumMailer.destroy_album(@album).deliver_now
+        #AlbumMailer.destroy_album(@album).deliver_now
         format.json { head :no_content }
        end
   end
@@ -120,6 +120,6 @@ class AlbumsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def album_params
-      params.require(:album).permit(:title, :discription, :tag, images: [])
+      params.require(:album).permit(:title, :discription,  :tag, :publish, images: [])
     end
 end
