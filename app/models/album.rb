@@ -1,5 +1,5 @@
 class Album < ApplicationRecord
-    paginates_per 2
+    paginates_per 3
     belongs_to :user
     has_many_attached :images
   

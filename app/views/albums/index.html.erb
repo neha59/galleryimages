@@ -1,19 +1,23 @@
 
 <div class="jumbotron">
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1 class="display-2 text-center text-success">Gallery<h1>
+</div>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-8">
-     <p id="notice"><%= notice %></p>
-    </div>
     <div class="col-4">
-    <%= search_form_for @search do |f| %>
+      <%= search_form_for @search do |f| %>
       <%= f.text_field :title_or_discription_cont, class: " rounded "%>
       <%= f.submit "Search", class: "rounded btn-secondary" %>
       <% end %>
     </div>
+    <div class="col-8 text-right  h2 "><u>
+    <%= link_to 'Create New Gallery', new_album_path %></u>
+    </div>
   </div>   
 </div>     
-  <h1 class="display-2 text-center text-success">Gallery<h1>
+  
 
   <table class="table table-warning table-hover table-bordered text-center ">
     <thead class="h4">
@@ -45,8 +49,7 @@
      <% end %>
     </tbody>
     </table>
-<div class="text-center  ">
-<%= link_to 'Create New Gallery', new_album_path %></h1><br><br>
+<br>
 <%= paginate @albums%>
-</div>
+
 </div>

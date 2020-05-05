@@ -1,0 +1,46 @@
+
+     
+     <div class="carousel-inner  ">
+            <div class="carousel-item active">
+                <div class="image-fluid ">
+                    <%= image_tag  "https://posterjackcanada.files.wordpress.com/2013/12/silhouette-photographer-tripod-sunset-sunrise.jpg", width: "1300px ", height: "550px"%>
+                </div>
+                <div class="carousel-caption " , style=padding-left:540px>
+                    
+                    <h4>"The nice things about the gallery shows is that without having to pay any money you can just go and see it."</h4>
+                </div>
+            </div>
+        </div>  
+
+<div class="container-fluid mb-2 pt-1  jumbotron">
+    <div class="row-fluid  text-danger pb-2">
+        <h1 id="publish" class="font-weight-bolder jumbotron">Recent images published by user:</h1>
+    </div>
+    <div class="container">
+        <div class="row mb-5 pt-1 justify-content-md-center">
+            <% @albums.each do |album| %>
+            <% if album.publish? %>
+            <div class="col-3 m-4 card">
+
+                <div class="card-body ">
+                    
+                    <p><strong>Title: </strong><%= album.title %></p>
+                    <p><strong>Published On: </strong><span class="text-muted"><%= album.created_at.to_s.split(' ')[0] %></span></p>
+                    <p><strong>Last Updated: </strong><span class="text-muted"><%= album.updated_at.to_s.split(' ')[0] %></span></p>
+                    <p><strong>  Tags : </strong><span class="text-muted"><%= album.tag %></span></p>
+                    <%= link_to 'Show', album , class:'btn btn-primary text-white btn-sm' %>
+                </div>
+                <div class="card-footer text-muted">
+                    
+                    <p><strong>User: </strong><%= album.user.email.split('@')[0] %></p>
+                </div>
+            </div>
+            <% end %>
+            <% end %>
+        </div>
+
+
+    </div>
+</div>
+
+
