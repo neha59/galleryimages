@@ -50,10 +50,10 @@
             <ul class="navbar-nav ml-auto ">
                 <% unless user_signed_in? %>
                 <li class="">
-                    <a class="nav-link" href="/users/sign_in">Log In</a>
-                </li>
+                    <a class="nav-link btn btn-primary" href="/users/sign_in">Log In</a>
+                </li> &nbsp &nbsp
                 <li class="">
-                    <a class="nav-link" href="/users/sign_up">Sign up</a>
+                    <a class="nav-link btn btn-danger" href="/users/sign_up">Sign up</a>
                 </li>
                 <% end %>
                 <% if user_signed_in? %>
