@@ -57,7 +57,7 @@
                 </li>
                 <% end %>
                 <% if user_signed_in? %>
-                <li class="">
+                <li class="btn btn-danger btn-sm">
                     <%= link_to "SignOut", destroy_user_session_path, :method => 'delete', class: "nav-link" %>
                 </li>
                 <% end %>

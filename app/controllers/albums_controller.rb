@@ -12,30 +12,21 @@ class AlbumsController < ApplicationController
   def index
 
 
-   # @search = Album.search(params[:q])
-   # @albums = @search.result
-   #   if var ==true
-      #    @search = Album.search(params[:q])
-     #     @albums = @search.result
-          # @albums = Album.search(params[:search])
-        #  @albums = Album.where(["title LIKE ?", "%#{params[:search]}%"]).page(params[:page])
-
-       #   @albums = Album.order(:title).page(params[:page])
-      #else
-       #   @albums = current_user.albums.page(params[:page])
-      #end
-    
-      
-     var = current_user
-      if var ==true
-        @search = Album.ransack(params[:q])
-        @albums = @search.result.includes(:user).page(params[:page])
-      else
-       # @albums = current_user.albums
-        @search= current_user.albums.ransack(params[:q])
-        @albums = @search.result.includes(:user).page(params[:page])
-      end
+  
+    var = current_user.admin
+    if var ==true
+      @search = Album.ransack(params[:q])
+      @albums = @search.result.includes(:user).page(params[:page])
      
+
+    else
+     
+      @search= current_user.albums.ransack(params[:q])
+      @albums = @search.result.includes(:user).page(params[:page])
+      
+
+    end
+   
 
   end
 
